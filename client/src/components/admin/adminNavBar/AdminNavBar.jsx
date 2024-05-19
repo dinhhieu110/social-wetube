@@ -39,11 +39,9 @@ const AdminNavBar = () => {
         {isPopuped && (
           <div className="popupBox">
             <button className="edit-btn">
-              {" "}
               <ModeEditOutlineIcon /> Edit Profile
             </button>
             <button className="pass-btn">
-              {" "}
               <KeyIcon /> Change Password
             </button>
             <button style={{ paddingRight: "10px" }} className="logout-btn">
