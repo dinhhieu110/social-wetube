@@ -16,7 +16,7 @@ function AdminProductDetail() {
         <div className="bottom-right">
           <div className="user-title-container">
             <h1 className="user-title">Update Product</h1>
-            <NavLink to="/newProduct">
+            <NavLink to="/adminProductNew">
               <button className="user-add-btn">Create</button>
             </NavLink>
           </div>

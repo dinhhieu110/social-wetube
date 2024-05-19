@@ -4,6 +4,7 @@ import AdminNavBar from "../../../components/admin/adminNavBar/AdminNavBar";
 import AdminLeftBar from "../../../components/admin/adminLeftBar/AdminLeftBar";
 import { DataGrid } from "@mui/x-data-grid";
 import { productRows } from "../../../data/fakeProductList";
+import { NavLink } from "react-router-dom";
 
 function AdminUserList() {
   const columns = [
@@ -34,6 +35,20 @@ function AdminUserList() {
         <AdminLeftBar />
         <div className="bottom-right">
           <h1>User Management</h1>
+          <NavLink to={"/adminUser/:userId"}>
+            <button
+              style={{
+                width: "200px",
+                padding: "8px",
+                backgroundColor: "darkBlue",
+                color: "#fff",
+                cursor: "pointer",
+                fontWeight: "600",
+              }}
+            >
+              Demo Edit Page
+            </button>
+          </NavLink>
           <div style={{ height: "70vh", width: "100%" }}>
             <DataGrid
               rows={productRows}

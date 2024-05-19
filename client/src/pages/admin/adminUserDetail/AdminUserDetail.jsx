@@ -18,7 +18,7 @@ function AdminUserDetail() {
         <div className="bottom-right">
           <div className="user-title-container">
             <h1 className="user-title">Edit User</h1>
-            <NavLink to="/newUser">
+            <NavLink to="/adminUserNew">
               <button className="user-add-btn">Create</button>
             </NavLink>
           </div>
