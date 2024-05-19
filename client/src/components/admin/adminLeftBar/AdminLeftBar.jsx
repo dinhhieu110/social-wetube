@@ -22,7 +22,7 @@ const AdminLeftBar = () => {
               Menu
             </span>
           </div>
-          <NavLink className="links-style" to="/home">
+          <NavLink className="links-style" to="/adminHome">
             <div className="item">
               <HomeOutlinedIcon />
               <span>Home</span>
@@ -46,7 +46,7 @@ const AdminLeftBar = () => {
               Management
             </span>
           </div>
-          <NavLink className="links-style" to="/userList">
+          <NavLink className="links-style" to="/adminUserList">
             <div className="item">
               <PeopleAltOutlinedIcon />
               <span>Users</span>
