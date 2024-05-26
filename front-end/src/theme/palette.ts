@@ -1,55 +1,29 @@
 import { PaletteOptions } from '@mui/material';
 
-declare module '@mui/material/styles' {
-  interface PaletteColor {
-    darker?: string;
-  }
-  interface SimplePaletteColorOptions {
-    darker?: string;
-  }
-  interface Palette {
-    neutral: Palette['primary'];
-  }
-  interface PaletteOptions {
-    neutral: PaletteOptions['primary'];
-  }
-}
-
 export const lightModePalette: PaletteOptions = {
-  mode: 'light',
   primary: {
     main: '#f44336',
     light: '#f6685e',
     dark: '#aa2e25',
-    darker: '#512da8',
   },
   secondary: {
     main: '#ffea00',
     light: '#ffee33',
     dark: '#b2a300',
   },
-  neutral: {
-    main: '#5d4037',
-    light: '#aea09b',
-    dark: '#4a332c',
-  },
 };
 
 export const darkModePalette: PaletteOptions = {
   primary: {
-    main: '#0A1172',
-    light: '#63C5DA',
-    dark: '#3944BC',
-    darker: '#3944BC',
+    light: '#3f3f3f',
+    main: '#272727',
+    dark: '#0f0f0f',
+    contrastText: '#ffffff',
   },
   secondary: {
-    main: '#097969',
-    light: '#90EE90',
-    dark: '#00A36C',
-  },
-  neutral: {
-    main: '#805158',
-    light: '#73494f',
-    dark: '#5a393e',
+    main: '#f1f1f1',
+    light: '#fffff',
+    dark: '#d9d9d9',
+    contrastText: '#0f0f0f',
   },
 };
