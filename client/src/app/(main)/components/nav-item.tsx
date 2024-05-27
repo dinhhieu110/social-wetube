@@ -17,7 +17,7 @@ const NavItem: FC<NavItemProps> = ({ icon, text, href, activeIcon, onClick }) =>
   const isMatchRoute = pathname === href;
 
   return (
-    <ListItemButton component={Link} href={href} selected={isMatchRoute} onClick={onClick}>
+    <ListItemButton component={Link} href={href} selected={isMatchRoute} onClick={onClick} title={text}>
       <ListItemIcon>{isMatchRoute && activeIcon ? activeIcon : icon}</ListItemIcon>
       <ListItemText
         primary={
