@@ -1,5 +1,5 @@
 'use client';
-import { Avatar, Drawer, IconButton, Tooltip } from '@mui/material';
+import { Avatar, IconButton, Tooltip } from '@mui/material';
 import { AiOutlineMenu } from 'react-icons/ai';
 import Search from './search';
 import { BellRegular, BellSolid, CameraPlus, WeTubeLogo } from '@/components/icons';
@@ -47,9 +47,7 @@ const Header = () => {
           </IconButton>
         </div>
       </div>
-      <Drawer open={openSidebar} onClose={handleClose}>
-        <Sidebar />
-      </Drawer>
+      <Sidebar open={openSidebar} onClose={handleClose} />
     </header>
   );
 };
