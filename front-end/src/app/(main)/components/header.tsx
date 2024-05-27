@@ -5,6 +5,7 @@ import Search from './search';
 import { BellRegular, BellSolid, CameraPlus, WeTubeLogo } from '@/components/icons';
 import { useState } from 'react';
 import Sidebar from './sidebar';
+import Link from 'next/link';
 
 const Header = () => {
   const [showNotification, setShowNotification] = useState(false);
@@ -25,10 +26,10 @@ const Header = () => {
           <IconButton onClick={handleOpen}>
             <AiOutlineMenu />
           </IconButton>
-          <span className="flex items-center gap-1 font-bold -tracking-widest text-2xl">
+          <Link href="/" className="flex items-center gap-1 font-bold -tracking-widest text-2xl">
             <WeTubeLogo width={29} height={20} />
             WeTube
-          </span>
+          </Link>
         </div>
         <Search />
         <div className="flex items-center gap-3">

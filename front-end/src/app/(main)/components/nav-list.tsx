@@ -1,23 +1,37 @@
-import { List, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
-import Link from 'next/link';
-import { GoHome } from 'react-icons/go';
+import { FC, MouseEventHandler } from 'react';
+import { List, ListSubheader } from '@mui/material';
+import NavItem, { NavItemProps } from './nav-item';
 
-const NavList = () => {
+export interface NavListProps {
+  items: NavItemProps[];
+  subheader?: string;
+  onClose?: MouseEventHandler;
+}
+
+const NavList: FC<NavListProps> = ({ items, subheader, onClose }) => {
   return (
-    <List className="p-3" component="nav">
-      <NavItem />
+    <List
+      className="p-3"
+      component="nav"
+      subheader={
+        subheader && (
+          <ListSubheader component="h6" color="inherit" sx={{ fontSize: 16, fontWeight: 700 }}>
+            {subheader}
+          </ListSubheader>
+        )
+      }
+    >
+      {items.map((item, index) => (
+        <NavItem
+          key={index}
+          text={item.text}
+          href={item.href}
+          icon={item.icon}
+          activeIcon={item.activeIcon}
+          onClick={onClose}
+        />
+      ))}
     </List>
-  );
-};
-
-const NavItem = () => {
-  return (
-    <ListItemButton component={Link} href="/">
-      <ListItemIcon>
-        <GoHome size={24} />
-      </ListItemIcon>
-      <ListItemText primary={<Typography fontSize={14}>Trang chủ</Typography>} />
-    </ListItemButton>
   );
 };
 
