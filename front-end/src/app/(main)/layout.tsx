@@ -10,7 +10,6 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   return (
     <div className="dark:bg-dark dark:text-white min-h-screen">
       <Header />
-      <Sidebar />
       <main>{children}</main>
     </div>
   );
