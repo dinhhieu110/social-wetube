@@ -71,7 +71,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       localStorage.setItem('token', response.data.token);
       dispatch({ type: 'LOGIN_FULFILLED', payload: response.data });
     } catch (error: any) {
-      dispatch({ type: 'LOGIN_REJECT', payload: error?.data?.message });
+      dispatch({ type: 'LOGIN_REJECT' });
       throw error;
     }
   });
