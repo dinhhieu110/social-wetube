@@ -8,3 +8,7 @@
   --fade-light: #606060;
   --fade-dark: #aaaaaa;
 }
+
+body {
+  color: var(--white)
+}

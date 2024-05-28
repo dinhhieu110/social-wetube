@@ -15,15 +15,15 @@ export const lightModePalette: PaletteOptions = {
 
 export const darkModePalette: PaletteOptions = {
   primary: {
-    light: '#3f3f3f',
-    main: '#272727',
-    dark: '#0f0f0f',
-    contrastText: '#ffffff',
-  },
-  secondary: {
     main: '#f1f1f1',
     light: '#fffff',
     dark: '#d9d9d9',
     contrastText: '#0f0f0f',
+  },
+  secondary: {
+    light: '#3f3f3f',
+    main: '#272727',
+    dark: '#0f0f0f',
+    contrastText: '#ffffff',
   },
 };
