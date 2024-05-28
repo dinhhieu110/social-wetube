@@ -18,10 +18,10 @@ const login = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ email });
   if (!user) {
-    throw new ErrorWithStatus('Email chưa được đăng ký', 401);
+    throw new ErrorWithStatus('Email chưa được đăng ký', 400);
   }
   if (!(await user.isPasswordMatched(password))) {
-    throw new ErrorWithStatus('Mật khẩu không đúng', 401);
+    throw new ErrorWithStatus('Mật khẩu không đúng', 400);
   }
 
   const accessToken = user.generateAccessToken();

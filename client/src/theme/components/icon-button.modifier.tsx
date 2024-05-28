@@ -3,11 +3,11 @@ import { Components, Theme } from '@mui/material/styles';
 export const MuiIconButton: Components<Theme>['MuiIconButton'] = {
   variants: [
     {
-      props: { color: 'primary' },
+      props: { color: 'secondary' },
       style: ({ theme }) => {
         const {
           palette: {
-            primary: { main, light, contrastText },
+            secondary: { main, light, contrastText },
           },
         } = theme;
         return {

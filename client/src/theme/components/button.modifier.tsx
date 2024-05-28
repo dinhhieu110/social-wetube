@@ -43,11 +43,11 @@ export const MuiButton: Components<Theme>['MuiButton'] = {
       },
     },
     {
-      props: { color: 'primary', variant: 'contained' },
+      props: { color: 'secondary', variant: 'contained' },
       style: ({ theme }) => {
         const {
           palette: {
-            primary: { light },
+            secondary: { light },
           },
         } = theme;
         return {

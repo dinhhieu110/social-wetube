@@ -1,12 +1,44 @@
+'use client';
+import { useAuth } from '@/hooks';
 import LoadingButton from '@mui/lab/LoadingButton';
 import { TextField } from '@mui/material';
+import { constants } from '@/utils';
+import * as yup from 'yup';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from 'next/navigation';
+
+const schema = yup.object().shape({
+  email: yup.string().required('Vui lòng nhập email').matches(constants.emailRegex, 'Email không hợp lệ'),
+  password: yup.string().required('Vui lòng nhập mật khẩu'),
+});
 
 const LoginForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+  const { login } = useAuth();
+  const router = useRouter();
+
+  const onSubmit = async (data: yup.InferType<typeof schema>) => {
+    await login(data).then(() => router.push('/'));
+  };
+
   return (
-    <form className="flex flex-col gap-6">
-      <TextField label="Email" />
-      <TextField label="Mật khẩu" />
-      <LoadingButton variant="contained" color="primary" size="large">
+    <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
+      <TextField label="Email" {...register('email')} error={!!errors.email} helperText={errors.email?.message} />
+      <TextField
+        label="Mật khẩu"
+        {...register('password')}
+        error={!!errors.password}
+        helperText={errors.password?.message}
+        type="password"
+      />
+      <LoadingButton variant="contained" color="primary" size="large" type="submit">
         Đăng nhập
       </LoadingButton>
     </form>

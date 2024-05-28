@@ -13,7 +13,7 @@ const Search = () => {
           endAdornment: (
             <InputAdornment position="end">
               <Tooltip title="Tìm kiếm">
-                <Button>
+                <Button color="secondary">
                   <CiSearch size={24} />
                 </Button>
               </Tooltip>
@@ -25,7 +25,7 @@ const Search = () => {
         }}
       />
       <Tooltip title="Tìm kiếm bằng giọng nói">
-        <IconButton color="primary">
+        <IconButton color="secondary">
           <HiMicrophone />
         </IconButton>
       </Tooltip>

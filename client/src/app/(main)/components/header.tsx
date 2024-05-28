@@ -6,8 +6,10 @@ import { BellRegular, BellSolid, CameraPlus, WeTubeLogo } from '@/components/ico
 import { useState } from 'react';
 import Sidebar from './sidebar';
 import Link from 'next/link';
+import { useAuth } from '@/hooks';
 
 const Header = () => {
+  const { user } = useAuth();
   const [showNotification, setShowNotification] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
 
@@ -43,9 +45,11 @@ const Header = () => {
               {showNotification ? <BellSolid /> : <BellRegular />}
             </IconButton>
           </Tooltip>
-          <IconButton>
-            <Avatar src="/goku.png" sx={{ width: 32, height: 32 }} />
-          </IconButton>
+          <Tooltip title={user?.name || ''}>
+            <IconButton>
+              <Avatar src={user?.avatar || '/goku.png'} sx={{ width: 32, height: 32 }} />
+            </IconButton>
+          </Tooltip>
         </div>
       </div>
       <Sidebar open={openSidebar} onClose={handleClose} />
