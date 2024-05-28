@@ -8,7 +8,7 @@ interface MainLayoutProps {
 
 const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="dark:bg-dark dark:text-white min-h-screen">
+    <div className="dark:bg-dark dark:text-white min-h-screen overflow-auto">
       <Header />
       <main>{children}</main>
     </div>
