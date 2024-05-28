@@ -44,7 +44,7 @@ const Header = () => {
             </IconButton>
           </Tooltip>
           <IconButton>
-            <Avatar sx={{ width: 32, height: 32 }} />
+            <Avatar src="/goku.png" sx={{ width: 32, height: 32 }} />
           </IconButton>
         </div>
       </div>

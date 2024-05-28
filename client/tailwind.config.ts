@@ -16,6 +16,10 @@ const config: Config = {
       backgroundColor: {
         dark: '#0f0f0f',
       },
+      flex:{
+        '2': '2 2 0%',
+        '3': '3 3 0%',
+      }
     },
   },
   plugins: [],
