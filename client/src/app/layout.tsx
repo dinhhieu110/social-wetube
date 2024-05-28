@@ -3,7 +3,9 @@ import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
 import MuiProvider from '@/contexts/theme-provider';
 import AuthProvider from '@/contexts/auth-provider';
+import { ToastContainer } from 'react-toastify';
 import './globals.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const roboto = Roboto({ subsets: ['latin'], weight: ['300', '400', '500', '700', '900'] });
 
@@ -23,6 +25,7 @@ export default function RootLayout({
         <MuiProvider>
           <AuthProvider>{children}</AuthProvider>
         </MuiProvider>
+        <ToastContainer closeOnClick draggable className="custom-toast" />
       </body>
     </html>
   );

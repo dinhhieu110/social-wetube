@@ -56,10 +56,11 @@ const api = async (
         return Promise.reject(error);
       }
     }
-    return Promise.reject(response);
+    const errorData = await response?.json();
+    return Promise.reject({ status: response.status, data: errorData });
   }
 
-  return response.json();
+  return response?.json();
 };
 
 export default api;

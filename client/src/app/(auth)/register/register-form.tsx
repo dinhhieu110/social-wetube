@@ -1,11 +1,14 @@
 'use client';
+import { useState } from 'react';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { TextField } from '@mui/material';
+import { Alert, TextField } from '@mui/material';
 import { constants } from '@/utils';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import api from '@/config/api';
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/navigation';
 
 const schema = yup
   .object({
@@ -30,11 +33,16 @@ const RegisterForm = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const [error, setError] = useState<string>();
+  const router = useRouter();
 
   const onSubmit = async (data: yup.InferType<typeof schema>) => {
     await api('/auth/register', 'POST', data)
-      .then((res) => console.log(res.data))
-      .catch(console.log);
+      .then((res) => {
+        toast.success(res.message);
+        router.push('/login');
+      })
+      .catch((error) => setError(error?.data?.message || constants.sthWentWrong));
   };
 
   return (
@@ -55,6 +63,11 @@ const RegisterForm = () => {
         error={!!errors.confirmPassword}
         helperText={errors.confirmPassword?.message}
       />
+      {error && (
+        <Alert variant="filled" severity="error">
+          {error}
+        </Alert>
+      )}
       <LoadingButton variant="contained" color="primary" size="large" type="submit">
         Đăng ký
       </LoadingButton>

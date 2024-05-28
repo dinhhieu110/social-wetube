@@ -1,5 +1,5 @@
 'use client';
-import { Avatar, IconButton, Tooltip } from '@mui/material';
+import { Avatar, Button, IconButton, Tooltip } from '@mui/material';
 import { AiOutlineMenu } from 'react-icons/ai';
 import Search from './search';
 import { BellRegular, BellSolid, CameraPlus, WeTubeLogo } from '@/components/icons';
@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { useAuth } from '@/hooks';
 
 const Header = () => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const [showNotification, setShowNotification] = useState(false);
   const [openSidebar, setOpenSidebar] = useState(false);
 
@@ -34,23 +34,27 @@ const Header = () => {
           </Link>
         </div>
         <Search />
-        <div className="flex items-center gap-3">
-          <Tooltip title="Tạo">
-            <IconButton>
-              <CameraPlus />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title="Thông báo">
-            <IconButton onClick={() => setShowNotification(!showNotification)}>
-              {showNotification ? <BellSolid /> : <BellRegular />}
-            </IconButton>
-          </Tooltip>
-          <Tooltip title={user?.name || ''}>
-            <IconButton>
+        {user ? (
+          <div className="flex items-center gap-3">
+            <Tooltip title="Tạo">
+              <IconButton>
+                <CameraPlus />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Thông báo">
+              <IconButton onClick={() => setShowNotification(!showNotification)}>
+                {showNotification ? <BellSolid /> : <BellRegular />}
+              </IconButton>
+            </Tooltip>
+            <IconButton onClick={async () => await logout()}>
               <Avatar src={user?.avatar || '/goku.png'} sx={{ width: 32, height: 32 }} />
             </IconButton>
-          </Tooltip>
-        </div>
+          </div>
+        ) : (
+          <Button component={Link} href="/login">
+            Đăng nhập
+          </Button>
+        )}
       </div>
       <Sidebar open={openSidebar} onClose={handleClose} />
     </header>

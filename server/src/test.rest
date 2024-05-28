@@ -27,3 +27,13 @@ Content-Type: application/json
 
 # @name [Auth]refreshToken
 POST {{baseUrl}}/auth/refresh-token
+
+### 
+
+# @name [Auth]logout
+GET {{baseUrl}}/auth/logout
+
+### 
+
+# @name [Auth]loginByRefreshToken
+POST {{baseUrl}}/auth/login-refresh

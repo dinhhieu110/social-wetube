@@ -3,5 +3,5 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.workingDirectories": ["./server"],
   "cSpell.language": "en,vi",
-  "cSpell.words": ["hookform"]
+  "cSpell.words": ["hookform", "toastify"]
 }

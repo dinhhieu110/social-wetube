@@ -1,7 +1,7 @@
 'use client';
 import { useAuth } from '@/hooks';
 import LoadingButton from '@mui/lab/LoadingButton';
-import { TextField } from '@mui/material';
+import { Alert, TextField } from '@mui/material';
 import { constants } from '@/utils';
 import * as yup from 'yup';
 import { useForm } from 'react-hook-form';
@@ -21,11 +21,13 @@ const LoginForm = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const { login } = useAuth();
+  const { isLoading, isError, message, login } = useAuth();
   const router = useRouter();
 
   const onSubmit = async (data: yup.InferType<typeof schema>) => {
-    await login(data).then(() => router.push('/'));
+    await login(data)
+      .then(() => router.push('/'))
+      .catch();
   };
 
   return (
@@ -38,7 +40,12 @@ const LoginForm = () => {
         helperText={errors.password?.message}
         type="password"
       />
-      <LoadingButton variant="contained" color="primary" size="large" type="submit">
+      {isError && (
+        <Alert variant="filled" severity="error">
+          {message}
+        </Alert>
+      )}
+      <LoadingButton variant="contained" color="primary" size="large" type="submit" loading={isLoading}>
         Đăng nhập
       </LoadingButton>
     </form>

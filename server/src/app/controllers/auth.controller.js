@@ -37,7 +37,7 @@ const login = asyncHandler(async (req, res) => {
       signed: true,
       sameSite: 'none',
       path: '/api/auth',
-      // secure: true, // https
+      secure: true, // https
     })
     .json({ data: { ...user.toJSON(), token: accessToken }, message: 'Đăng nhập thành công' });
 });
@@ -62,10 +62,55 @@ const refreshToken = asyncHandler(async (req, res, next) => {
         signed: true,
         sameSite: 'none',
         path: '/api/auth',
-        // secure: true, //https
+        secure: true, //https
       })
       .json({ token });
   });
 });
 
-module.exports = { register, login, refreshToken };
+const logout = asyncHandler(async (req, res) => {
+  const refreshToken = req.signedCookies.refreshToken;
+  await User.findOneAndUpdate(
+    { refreshToken },
+    {
+      refreshToken: '',
+    },
+  );
+  res
+    .clearCookie('refreshToken', {
+      httpOnly: true,
+      signed: true,
+      sameSite: 'none',
+      path: '/api/auth',
+      secure: true, //https
+    })
+    .sendStatus(204);
+});
+
+const loginByRefreshToken = asyncHandler(async (req, res, next) => {
+  const refreshToken = req.signedCookies.refreshToken;
+  if (!refreshToken) throw new ErrorWithStatus('Vui lòng đăng nhập', 400);
+
+  const user = await User.findOne({ refreshToken });
+  if (!user) throw new ErrorWithStatus('Không tồn tài người dùng!', 404);
+
+  jwt.verify(refreshToken, process.env.REFRESH_TOKEN, async (err, decoded) => {
+    if (err || !user._id.equals(decoded.id)) return next(new ErrorWithStatus('Đã có lỗi với refresh token', 400));
+    const token = user.generateAccessToken();
+    const newRefreshToken = user.generateRefreshToken();
+    user.refreshToken = newRefreshToken;
+    await user.save();
+
+    res
+      .cookie('refreshToken', newRefreshToken, {
+        httpOnly: true,
+        signed: true,
+        sameSite: 'none',
+        path: '/api/auth',
+        secure: true, //https
+      })
+      .json({ data: { token, ...user.toJSON() }, message: 'Đăng nhập thành công' });
+  });
+});
+
+module.exports = { register, login, refreshToken, logout, loginByRefreshToken };
