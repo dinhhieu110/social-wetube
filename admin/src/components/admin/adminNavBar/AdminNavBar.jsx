@@ -1,15 +1,15 @@
-import "./adminNavBar.scss";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import './adminNavBar.scss';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 // import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import CastIcon from "@mui/icons-material/Cast";
-import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import LogoutIcon from "@mui/icons-material/Logout";
-import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
-import KeyIcon from "@mui/icons-material/Key";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import CastIcon from '@mui/icons-material/Cast';
+import GridViewOutlinedIcon from '@mui/icons-material/GridViewOutlined';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
+import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
+import LogoutIcon from '@mui/icons-material/Logout';
+import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline';
+import KeyIcon from '@mui/icons-material/Key';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 const AdminNavBar = () => {
   const [isPopuped, setIsPopuped] = useState(false);
   const popup = () => {
@@ -19,7 +19,7 @@ const AdminNavBar = () => {
   return (
     <div className="navbar">
       <div className="left">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/" style={{ textDecoration: 'none' }}>
           <span className="logo">Dashboard</span>
         </Link>
         <HomeOutlinedIcon />
@@ -44,7 +44,7 @@ const AdminNavBar = () => {
             <button className="pass-btn">
               <KeyIcon /> Change Password
             </button>
-            <button style={{ paddingRight: "10px" }} className="logout-btn">
+            <button style={{ paddingRight: '10px' }} className="logout-btn">
               <LogoutIcon /> Log Out
             </button>
           </div>
