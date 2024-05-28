@@ -13,7 +13,7 @@ interface CardVideoDetailProps {
 const CardVideoDetail: FC<CardVideoDetailProps> = ({ video }) => {
   return (
     <div className="flex gap-3 mb-4">
-      <img className="rounded-2xl" width={200} height={200} src={video.thumbnail} alt="image_alt" />
+      <img className="rounded-2xl cursor-pointer" width={200} height={200} src={video.thumbnail} alt="image_alt" />
       <div className="flex flex-col justify-evenly">
         <p className="font-semibold">{video.title}</p>
         <div className="flex items-center gap-2">

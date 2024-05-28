@@ -17,7 +17,8 @@ export const videos: Video[] = [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam aperiam omnis est quod tempore consequatur dolor repudiandae iure fugit consequuntur cumque eos odit, aliquam esse velit ducimus nihil consectetur minima.',
     url: 'https://www.youtube.com/embed/jYk0pvSiNhQ?si=I0KlxnUAZDN9zztY?autoplay=0',
-    thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWlVR6hCeknT81-VulctKsr8oWHa2FKKY_cA&s',
+    thumbnail:
+      'https://flatirons.com/static/0a79ca63e3ace4bfd802a70a2d7427ae/537f5/What-is-Drupal-An-Overview-in-2025.webp',
     views: 120,
     categories: ['education', 'entertainment'],
     tags: ['ielts', 'english'],
@@ -50,7 +51,8 @@ export const videos: Video[] = [
     description:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam aperiam omnis est quod tempore consequatur dolor repudiandae iure fugit consequuntur cumque eos odit, aliquam esse velit ducimus nihil consectetur minima.',
     url: 'https://www.youtube.com/embed/jYk0pvSiNhQ?si=I0KlxnUAZDN9zztY?autoplay=0',
-    thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWlVR6hCeknT81-VulctKsr8oWHa2FKKY_cA&s',
+    thumbnail:
+      'https://flatirons.com/static/0a79ca63e3ace4bfd802a70a2d7427ae/537f5/What-is-Drupal-An-Overview-in-2025.webp',
     views: 120,
     categories: ['education', 'entertainment'],
     tags: ['ielts', 'english'],
