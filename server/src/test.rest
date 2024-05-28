@@ -1,0 +1,29 @@
+@baseUrl = http://localhost:2000/api
+
+# Auth
+
+# @name register
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "email": "jinnguyen054@gmail.com",
+    "password": "2604",
+    "name": "Syaoran"
+}
+
+###
+
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "jinnguyen054@gmail.com",
+    "password": "2604"
+}
+
+### 
+
+# @name [Auth]refreshToken
+POST {{baseUrl}}/auth/refresh-token
