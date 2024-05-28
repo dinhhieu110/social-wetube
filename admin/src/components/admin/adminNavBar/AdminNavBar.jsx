@@ -1,4 +1,4 @@
-import './adminNavBar.scss';
+import './AdminNavBar.scss';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 // import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import CastIcon from '@mui/icons-material/Cast';
