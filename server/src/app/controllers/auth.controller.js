@@ -84,7 +84,8 @@ const logout = asyncHandler(async (req, res) => {
       path: '/api/auth',
       secure: true, //https
     })
-    .sendStatus(204);
+    .status(200)
+    .json({ message: 'Đăng xuất thành công' });
 });
 
 const loginByRefreshToken = asyncHandler(async (req, res, next) => {

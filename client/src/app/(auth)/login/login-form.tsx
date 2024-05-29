@@ -40,7 +40,7 @@ const LoginForm = () => {
         helperText={errors.password?.message}
         type="password"
       />
-      {isError && (
+      {isError && message && (
         <Alert variant="filled" severity="error">
           {message}
         </Alert>

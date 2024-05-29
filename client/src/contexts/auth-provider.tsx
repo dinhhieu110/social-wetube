@@ -38,7 +38,7 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
         user: null,
         isLoading: false,
         isError: true,
-        message: action.payload || constants.sthWentWrong,
+        message: action.payload,
       };
     }
     case 'LOGOUT': {
@@ -72,7 +72,6 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       dispatch({ type: 'LOGIN_FULFILLED', payload: response.data });
     } catch (error: any) {
       dispatch({ type: 'LOGIN_REJECT' });
-      throw error;
     }
   });
 
@@ -83,7 +82,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       localStorage.setItem('token', response.data.token);
       dispatch({ type: 'LOGIN_FULFILLED', payload: response.data });
     } catch (error: any) {
-      dispatch({ type: 'LOGIN_REJECT', payload: error?.data?.message });
+      dispatch({ type: 'LOGIN_REJECT', payload: error?.data?.message || constants.sthWentWrong });
       throw error;
     }
   };
@@ -93,7 +92,7 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     try {
       await api('/auth/logout');
     } catch (error: any) {
-      throw error;
+      console.log(error);
     }
   };
 
